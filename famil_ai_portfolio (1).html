@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAMIL.AI – Different Voices, Better Choices</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        terracotta: {
+                            DEFAULT: '#C85A32',
+                            light: '#E07A53',
+                            dark: '#A6451F',
+                            subtle: '#FDF3F0'
+                        },
+                        sand: {
+                            DEFAULT: '#F7F4F0',
+                            dark: '#EBE5DD',
+                            muted: '#D5CEC5'
+                        },
+                        charcoal: {
+                            DEFAULT: '#2B2D2F',
+                            muted: '#5A5E63',
+                            light: '#8C9094'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Newsreader"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F7F4F0;
+            color: #2B2D2F;
+            overflow-x: hidden;
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+        .font-serif {
+            font-family: 'Newsreader', serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(235, 229, 221, 0.9);
+        }
+        .editorial-shadow {
+            box-shadow: 0 25px 50px -12px rgba(43, 45, 47, 0.08);
+        }
+        .bracket-badge {
+            display: inline-block;
+            background-color: #FDF3F0;
+            border: 1px dashed #C85A32;
+            color: #A6451F;
+            padding: 0.35rem 0.9rem;
+            border-radius: 9999px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin: 0.3rem 0;
+            line-height: 1.5;
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+        .animate-glow {
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-terracotta selection:text-white">
+
+    <header class="sticky top-0 z-50 bg-sand/90 backdrop-blur-md border-b border-sand-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="font-serif text-2xl font-bold tracking-tight text-charcoal">FAMIL<span class="text-terracotta">.AI</span></span>
+                <span class="text-xs uppercase tracking-widest text-charcoal-muted border-l border-sand-muted pl-3 font-medium hidden md:inline-block">Competition Portfolio</span>
+            </div>
+            <nav class="hidden xl:flex items-center space-x-4 text-xs font-semibold tracking-wider uppercase text-charcoal-muted">
+                <a href="#problem" class="hover:text-terracotta transition-colors">Problem</a>
+                <a href="#missing-layer" class="hover:text-terracotta transition-colors">Missing Layer</a>
+                <a href="#family" class="hover:text-terracotta transition-colors">Why Family</a>
+                <a href="#solution" class="hover:text-terracotta transition-colors">Solution</a>
+                <a href="#gameplay" class="hover:text-terracotta transition-colors">Interactive Demo</a>
+                <a href="#validation" class="hover:text-terracotta transition-colors">Validation</a>
+                <a href="#impact" class="hover:text-terracotta transition-colors">Impact</a>
+            </nav>
+            <div>
+                <a href="#vision" class="text-xs sm:text-sm font-semibold uppercase tracking-wider bg-terracotta text-white px-4 sm:px-5 py-2.5 rounded-full hover:bg-terracotta-dark transition-all shadow-sm hover:shadow whitespace-nowrap">Final Vision</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="relative min-h-[92vh] flex items-center justify-center px-6 py-24 border-b border-sand-dark bg-gradient-to-b from-sand via-sand to-white overflow-hidden">
+            <div class="absolute -left-24 top-24 w-96 h-96 bg-terracotta/5 rounded-full blur-3xl pointer-events-none animate-glow"></div>
+            <div class="max-w-5xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+                <div class="lg:col-span-7 space-y-8">
+                    <div class="inline-flex items-center space-x-2 bg-terracotta-subtle border border-terracotta/20 px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-widest text-terracotta shadow-xs">
+                        <i class="fa-solid fa-sparkles text-terracotta"></i>
+                        <span>AI Literacy × Media Literacy × Intergenerational Learning</span>
+                    </div>
+                    <h1 class="text-6xl lg:text-8xl font-serif font-medium tracking-tight text-charcoal leading-[1.05]">
+                        FAMIL<span class="text-terracotta">.AI</span>
+                    </h1>
+                    <p class="text-3xl lg:text-4xl font-serif italic text-charcoal-muted">
+                        <span class="bracket-badge">“Different Voices – Better Choices.”</span>
+                    </p>
+                    <p class="text-2xl font-serif font-normal text-terracotta-dark">
+                        Conversations Before Conclusions.
+                    </p>
+                    <p class="text-xl font-serif italic text-charcoal pt-2 max-w-xl bg-terracotta-subtle p-5 rounded-2xl border border-terracotta/20 shadow-xs">
+                        <span class="text-terracotta font-semibold not-italic">[Core Inquiry]:</span> “What if learning to question information started with a family conversation?”
+                    </p>
+                    <div class="pt-6 flex flex-wrap gap-4">
+                        <a href="#problem" class="bg-terracotta text-white px-8 py-4 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-terracotta-dark transition-all shadow-md hover:-translate-y-0.5">Explore Narrative ↓</a>
+                        <a href="#gameplay" class="bg-sand-dark text-charcoal px-8 py-4 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-sand-muted transition-all shadow-xs">Try Live Simulation</a>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-5">
+                    <div class="glass-card p-8 rounded-3xl editorial-shadow space-y-6 border border-sand-dark relative overflow-hidden animate-float">
+                        <div class="absolute -right-12 -top-12 w-32 h-32 bg-terracotta/10 rounded-full blur-2xl pointer-events-none"></div>
+                        <div class="flex items-center justify-between border-b border-sand pb-4">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3.5 h-3.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span class="text-sm font-semibold uppercase tracking-wider text-charcoal-muted">Live Simulation Sandbox</span>
+                            </div>
+                            <span class="text-sm font-semibold bg-terracotta-subtle text-terracotta px-3 py-1 rounded-full">Ages 10–18 + Parents</span>
+                        </div>
+                        <div class="space-y-5">
+                            <div class="bg-sand/80 p-5 rounded-2xl space-y-3 border border-sand-dark transition-all hover:bg-sand">
+                                <div class="flex justify-between text-sm text-charcoal-muted font-medium">
+                                    <span>Perspective A (Child)</span>
+                                    <span class="text-terracotta font-semibold">Media Composer</span>
+                                </div>
+                                <p class="text-base font-medium text-charcoal">“Designing emotional urgency into a local news feed post...”</p>
+                            </div>
+                            <div class="flex justify-between items-center px-2">
+                                <div class="h-10 w-0.5 bg-terracotta/40 mx-auto"></div>
+                                <span class="text-sm font-bold uppercase tracking-widest text-terracotta bg-terracotta-subtle px-4 py-1.5 rounded-full border border-terracotta/20 shadow-xs">Dual Viewpoint Exchange</span>
+                                <div class="h-10 w-0.5 bg-terracotta/40 mx-auto"></div>
+                            </div>
+                            <div class="bg-terracotta-subtle p-5 rounded-2xl space-y-3 border border-terracotta/20 transition-all">
+                                <div class="flex justify-between text-sm text-terracotta font-semibold">
+                                    <span>Perspective B (Parent)</span>
+                                    <span>Investigator</span>
+                                </div>
+                                <p class="text-base text-charcoal font-medium">Evaluating emotional hooks and source cues using the S.P.O.T. framework.</p>
+                            </div>
+                        </div>
+                        <div class="text-center pt-3">
+                            <span class="text-sm text-charcoal-muted font-serif italic">“Bridging generational digital divides through shared reasoning.”</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="problem" class="py-28 px-6 max-w-5xl mx-auto border-b border-sand-dark scroll-mt-24">
+            <div class="space-y-12">
+                <div class="max-w-3xl space-y-4">
+                    <span class="text-sm uppercase font-bold tracking-widest text-terracotta">The Evidence & Problem</span>
+                    <h2 class="text-4xl lg:text-6xl font-serif text-charcoal leading-tight">
+                        <span class="bracket-badge">“When information looks real, trust becomes the first filter.”</span>
+                    </h2>
+                    <p class="text-charcoal text-lg leading-relaxed">
+                        Generative AI can now produce convincing text, images, audio, and video within seconds. The challenge is no longer only whether people can detect misinformation—it is why information feels believable before verification even begins.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- 01 Exposure -->
+                    <div class="bg-white p-8 rounded-3xl border border-sand-dark space-y-5 editorial-shadow flex flex-col justify-between transition-transform duration-300 hover:-translate-y-1">
+                        <div class="space-y-4">
+                            <span class="text-sm font-bold uppercase tracking-widest text-terracotta">01 — Exposure</span>
+                            <div class="text-5xl font-serif font-bold text-charcoal">~2 in 3</div>
+                            <h3 class="text-lg font-bold text-charcoal">Adolescent Digital Exposure</h3>
+                            <p class="text-base text-charcoal-muted leading-relaxed">
+                                Norwegian teenagers have encountered content they suspected was fabricated or misleading on digital feeds.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-sand text-xs text-charcoal-light font-semibold uppercase tracking-wider flex items-center space-x-2">
+                            <i class="fa-solid fa-chart-pie text-terracotta"></i>
+                            <span>Media Authority Research (Norway)</span>
+                        </div>
+                    </div>
+
+                    <!-- 02 Confidence -->
+                    <div class="bg-white p-8 rounded-3xl border border-sand-dark space-y-5 editorial-shadow flex flex-col justify-between transition-transform duration-300 hover:-translate-y-1">
+                        <div class="space-y-4">
+                            <span class="text-sm font-bold uppercase tracking-widest text-terracotta">02 — Confidence</span>
+                            <div class="text-5xl font-serif font-bold text-charcoal">74%</div>
+                            <h3 class="text-lg font-bold text-charcoal">Perceived Capability</h3>
+                            <p class="text-base text-charcoal-muted leading-relaxed">
+                                UK 12–17-year-olds reported high confidence in their ability to spot fake information online.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-sand text-xs text-charcoal-light font-semibold uppercase tracking-wider flex items-center space-x-2">
+                            <i class="fa-solid fa-shield-halved text-terracotta"></i>
+                            <span>Ofcom, “Media Lives / News Consumption Survey”</span>
+                        </div>
+                    </div>
+
+                    <!-- 03 Demonstrated Skill -->
+                    <div class="bg-white p-8 rounded-3xl border border-sand-dark space-y-5 editorial-shadow flex flex-col justify-between transition-transform duration-300 hover:-translate-y-1">
+                        <div class="space-y-4">
+                            <span class="text-sm font-bold uppercase tracking-widest text-terracotta">03 — Demonstrated Skill</span>
+                            <div class="text-5xl font-serif font-bold text-terracotta">11%</div>
+                            <h3 class="text-lg font-bold text-charcoal">Practical Verification Skill</h3>
+                            <p class="text-base text-charcoal-muted leading-relaxed">
+                                Only 11% correctly identified the tell-tale signs of fake content in a rigorous practical test.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-sand text-xs text-charcoal-light font-semibold uppercase tracking-wider flex items-center space-x-2">
+                            <i class="fa-solid fa-triangle-exclamation text-terracotta"></i>
+                            <span>Ofcom, “The genuine article? One in three internet users fail to question misinformation.”</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Confidence vs Skill Insight Callout -->
+                <div class="bg-terracotta-subtle p-6 md:p-8 rounded-3xl border border-terracotta/20 text-center shadow-xs">
+                    <p class="text-xl font-serif font-semibold text-terracotta-dark">
+                        <span class="text-terracotta font-bold">Key Takeaway:</span> Confidence does not necessarily translate into verification skill.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-2">
+                    <!-- 04 Teen AI Adoption -->
+                    <div class="bg-white p-8 rounded-3xl border border-sand-dark space-y-4 editorial-shadow flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="text-sm font-bold uppercase tracking-widest text-terracotta">04 — Teen AI Adoption</span>
+                            <div class="text-4xl font-serif font-bold text-terracotta">64%</div>
+                            <h3 class="text-base font-bold text-charcoal">U.S. Teen AI Usage</h3>
+                            <p class="text-sm text-charcoal-muted leading-relaxed">
+                                U.S. teens ages 13–17 report regularly using AI chatbots for learning, homework, and exploration.
+                            </p>
+                        </div>
+                        <div class="pt-3 border-t border-sand text-xs text-charcoal-light font-semibold uppercase tracking-wider flex items-center space-x-2">
+                            <i class="fa-solid fa-robot text-terracotta"></i>
+                            <span>Pew Research Center, “Teens, Social Media and Technology Survey”</span>
+                        </div>
+                    </div>
+
+                    <!-- 05 Parent Awareness Gap -->
+                    <div class="bg-white p-8 rounded-3xl border border-sand-dark space-y-4 editorial-shadow flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="text-sm font-bold uppercase tracking-widest text-terracotta">05 — Parent Awareness Gap</span>
+                            <div class="text-3xl font-serif font-bold text-charcoal">~3 in 10</div>
+                            <h3 class="text-base font-bold text-charcoal">Parental Blind Spots</h3>
+                            <p class="text-sm text-charcoal-muted leading-relaxed">
+                                Parents are unsure whether their teen actively uses AI chatbots, creating visibility gaps in household digital habits.
+                            </p>
+                        </div>
+                        <div class="pt-3 border-t border-sand text-xs text-charcoal-light font-semibold uppercase tracking-wider flex items-center space-x-2">
+                            <i class="fa-solid fa-users text-terracotta"></i>
+                            <span>Pew Research Center, “Parental Perspectives on AI and Digital Safety”</span>
+                        </div>
+                    </div>
+
+                    <!-- 06 Family Conversation Gap -->
+                    <div class="bg-white p-8 rounded-3xl border border-sand-dark space-y-4 editorial-shadow flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="text-sm font-bold uppercase tracking-widest text-terracotta">06 — Family Conversation Gap</span>
+                            <div class="text-3xl font-serif font-bold text-terracotta">4 in 10+</div>
+                            <h3 class="text-base font-bold text-charcoal">Unaddressed Safety Dialogue</h3>
+                            <p class="text-sm text-charcoal-muted leading-relaxed">
+                                Children report that no parent or guardian has ever talked with them about AI safety or verification guidelines.
+                            </p>
+                        </div>
+                        <div class="pt-3 border-t border-sand text-xs text-charcoal-light font-semibold uppercase tracking-wider flex items-center space-x-2">
+                            <i class="fa-solid fa-comments text-terracotta"></i>
+                            <span>Pew Research Center, “Teens and Digital Mentorship Study”</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Standalone AI Companionship Card -->
+                <div class="bg-white p-8 rounded-3xl border border-sand-dark space-y-4 editorial-shadow max-w-xl mx-auto">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm font-bold uppercase tracking-widest text-terracotta">Contextual Insight / AI Companionship</span>
+                        <span class="bg-terracotta-subtle text-terracotta text-[11px] px-2.5 py-0.5 rounded-full font-bold border border-terracotta/20">33% Statistic</span>
+                    </div>
+                    <div class="text-4xl font-serif font-bold text-charcoal">33%</div>
+                    <h3 class="text-base font-bold text-charcoal">Synthetic Companionship Satisfaction</h3>
+                    <p class="text-sm text-charcoal-muted leading-relaxed">
+                        33% of children find conversations with AI companions to be as satisfying or more satisfying than interactions with real-life friends.
+                    </p>
+                    <div class="pt-3 border-t border-sand text-xs text-charcoal-light font-semibold uppercase tracking-wider flex items-center space-x-2">
+                        <i class="fa-solid fa-heart-pulse text-terracotta"></i>
+                        <span>Common Sense Media, “AI and Children’s Social Development Report”</span>
+                    </div>
+                </div>
+
+                <div class="bg-charcoal text-sand p-8 rounded-3xl border border-charcoal text-center shadow-xs space-y-3">
+                    <p class="text-2xl font-serif font-medium text-sand leading-relaxed">
+                        “The problem is no longer only whether young people can verify information. It is also whether families are developing shared habits for questioning, discussing, and evaluating information together.”
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="missing-layer" class="py-28 px-6 max-w-5xl mx-auto border-b border-sand-dark scroll-mt-24">
+            <div class="space-y-12">
+                <div class="max-w-3xl space-y-4">
+                    <span class="text-sm uppercase font-bold tracking-widest text-terracotta">Conceptual Gap</span>
+                    <h2 class="text-4xl lg:text-6xl font-serif text-charcoal leading-tight">
+                        <span class="bracket-badge">“Most AI Literacy starts with verification.”</span>
+                    </h2>
+                    <p class="text-charcoal text-lg leading-relaxed">
+                        Conventional models treat information evaluation as a linear checklist performed after content arrives in the feed.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 md:p-10 rounded-3xl border border-sand-dark editorial-shadow space-y-6">
+                    <h3 class="text-2xl font-serif text-charcoal font-bold">Traditional Fact-Checking vs. FAMIL.AI Approach</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="border-b border-sand-dark text-xs uppercase tracking-wider text-charcoal-muted">
+                                    <th class="py-3 px-4">Traditional Digital Literacy</th>
+                                    <th class="py-3 px-4 text-terracotta">FAMIL.AI Missing Layer</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-sand text-base text-charcoal">
+                                <tr>
+                                    <td class="py-4 px-4 text-charcoal-muted">Parental warnings</td>
+                                    <td class="py-4 px-4 font-semibold text-charcoal">Often one-way advice</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-4 px-4 text-charcoal-muted">Single-player checklists</td>
+                                    <td class="py-4 px-4 font-semibold text-charcoal">Reflection and role reversal</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-4 px-4 text-charcoal-muted">Isolated consumer evaluation</td>
+                                    <td class="py-4 px-4 font-semibold text-charcoal">Both sides experience the Composer and Investigator roles</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pt-2">
+                        <p class="text-base font-serif italic text-charcoal-muted bg-sand p-4 rounded-2xl border border-sand-dark">
+                            FAMIL.AI does not replace fact-checking. It adds the missing social layer: learning how trust is formed, challenged, explained, and revised together.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+                    <div class="bg-white p-6 rounded-2xl border border-sand-dark text-center space-y-2 shadow-xs">
+                        <span class="text-sm font-bold text-terracotta uppercase">Step 1</span>
+                        <div class="text-lg font-bold text-charcoal">See Content</div>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-sand-dark text-center space-y-2 shadow-xs">
+                        <span class="text-sm font-bold text-terracotta uppercase">Step 2</span>
+                        <div class="text-lg font-bold text-charcoal">Check Source</div>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-sand-dark text-center space-y-2 shadow-xs">
+                        <span class="text-sm font-bold text-terracotta uppercase">Step 3</span>
+                        <div class="text-lg font-bold text-charcoal">Verify Facts</div>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-sand-dark text-center space-y-2 shadow-xs">
+                        <span class="text-sm font-bold text-terracotta uppercase">Step 4</span>
+                        <div class="text-lg font-bold text-charcoal">Decide Truth</div>
+                    </div>
+                </div>
+
+                <div class="bg-charcoal text-sand p-12 rounded-3xl space-y-8 relative overflow-hidden editorial-shadow">
+                    <div class="absolute right-0 top-0 w-80 h-80 bg-terracotta/15 rounded-full blur-3xl pointer-events-none"></div>
+                    <span class="text-sm uppercase tracking-widest text-terracotta-light font-bold">The Missing Stage</span>
+                    <h3 class="text-4xl font-serif text-sand">Trust Formation</h3>
+                    <p class="text-sand text-lg max-w-2xl leading-relaxed">
+                        People do not encounter information as neutral fact-checkers. Before checking a source, people automatically respond to emotional framing, visual credibility, familiarity, social cues, narrative structure, and perceived authority.
+                    </p>
+                    <div class="pt-6 border-t border-charcoal-muted/30">
+                        <p class="text-3xl font-serif italic text-sand">
+                            <span class="inline-block bg-charcoal-muted/30 text-sand px-5 py-2.5 rounded-xl border border-sand-muted/20">“Trust often comes before verification.”</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="family" class="py-28 px-6 max-w-5xl mx-auto border-b border-sand-dark scroll-mt-24">
+            <div class="space-y-12">
+                <div class="max-w-3xl space-y-4">
+                    <span class="text-sm uppercase font-bold tracking-widest text-terracotta">Intergenerational Mechanism</span>
+                    <h2 class="text-4xl lg:text-6xl font-serif text-charcoal leading-tight">
+                        <span class="bracket-badge">“Trust is learned socially.”</span>
+                    </h2>
+                    <p class="text-charcoal text-lg leading-relaxed">
+                        Families are among the first environments where people learn whom to trust, when to question, how to disagree, how to explain a judgment, and how to respond when another person sees the same situation differently.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-center">
+                    <div class="bg-white p-8 rounded-3xl border border-sand-dark text-center space-y-4 editorial-shadow transition-transform hover:-translate-y-1">
+                        <div class="w-12 h-12 rounded-2xl bg-terracotta-subtle text-terracotta flex items-center justify-center font-serif font-bold text-xl mx-auto mb-2">01</div>
+                        <h3 class="font-bold text-charcoal text-lg">Home Environment</h3>
+                        <p class="text-sm text-charcoal-muted">Initial baseline for evaluating credibility.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl border border-sand-dark text-center space-y-4 editorial-shadow transition-transform hover:-translate-y-1">
+                        <div class="w-12 h-12 rounded-2xl bg-terracotta-subtle text-terracotta flex items-center justify-center font-serif font-bold text-xl mx-auto mb-2">02</div>
+                        <h3 class="font-bold text-charcoal text-lg">Active Dialogue</h3>
+                        <p class="text-sm text-charcoal-muted">Comparing reactions to digital media.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl border border-sand-dark text-center space-y-4 editorial-shadow transition-transform hover:-translate-y-1">
+                        <div class="w-12 h-12 rounded-2xl bg-terracotta-subtle text-terracotta flex items-center justify-center font-serif font-bold text-xl mx-auto mb-2">03</div>
+                        <h3 class="font-bold text-charcoal text-lg">Different Viewpoints</h3>
+                        <p class="text-sm text-charcoal-muted">Bridging mobile feed and traditional news perspectives.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl border border-sand-dark text-center space-y-4 editorial-shadow transition-transform hover:-translate-y-1">
+                        <div class="w-12 h-12 rounded-2xl bg-terracotta-subtle text-terracotta flex items-center justify-center font-serif font-bold text-xl mx-auto mb-2">04</div>
+                        <h3 class="font-bold text-charcoal text-lg">Shared Judgment</h3>
+                        <p class="text-sm text-charcoal-muted">Building durable habits of questioning together.</p>
+                    </div>
+                </div>
+
+                <div class="bg-sand-dark/60 p-10 rounded-3xl border border-sand-dark text-center space-y-4 shadow-xs">
+                    <p class="text-3xl font-serif italic text-charcoal">
+                        <span class="bracket-badge">“If trust is shaped through relationships, why is AI Literacy usually taught alone?”</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-sand-dark/40 py-32 px-6 border-b border-sand-dark">
+            <div class="max-w-4xl mx-auto text-center space-y-10">
+                <span class="text-sm uppercase font-bold tracking-widest text-terracotta">Conceptual Bridge</span>
+                <blockquote class="text-5xl lg:text-7xl font-serif italic text-charcoal leading-tight">
+                    <span class="inline-block border-b-2 border-terracotta/40 pb-4">“Technology creates content.<br>Relationships create trust.”</span>
+                </blockquote>
+                <p class="text-charcoal max-w-2xl mx-auto text-xl leading-relaxed">
+                    FAMIL.AI brings AI Literacy back into the environment where trust is first experienced: the family.
+                </p>
+            </div>
+        </section>
+
+        <section id="solution" class="py-28 px-6 max-w-5xl mx-auto border-b border-sand-dark scroll-mt-24">
+            <div class="space-y-12">
+                <div class="max-w-3xl space-y-4">
+                    <span class="text-sm uppercase font-bold tracking-widest text-terracotta">Product Overview</span>
+                    <h2 class="text-4xl lg:text-6xl font-serif text-charcoal leading-tight">
+                        <span class="bracket-badge">“Meet FAMIL.AI.”</span>
+                    </h2>
+                    <p class="text-charcoal text-lg leading-relaxed">
+                        FAMIL.AI is an intergenerational AI Literacy and Media & Information Literacy learning game where a parent and child experience the same information scenario from different roles, anchored by our core <strong>S.P.O.T. Framework</strong>.
+                    </p>
+                </div>
+
+                <div class="bg-terracotta-subtle p-8 md:p-10 rounded-3xl border border-terracotta/30 text-center shadow-sm">
+                    <p class="text-2xl md:text-3xl font-serif font-semibold text-terracotta-dark leading-relaxed">
+                        “Most digital literacy tools teach people how to check information. FAMIL.AI teaches people to examine why they trusted it in the first place — together.”
+                    </p>
+                </div>
+
+                <div class="bg-white p-10 rounded-3xl border border-sand-dark editorial-shadow grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <div class="space-y-5">
+                        <span class="text-sm font-bold uppercase tracking-widest text-terracotta">Central Product Idea</span>
+                        <h3 class="text-3xl font-serif text-charcoal">Both Sides of the Persuasion Loop</h3>
+                        <p class="text-base text-charcoal-muted leading-relaxed">
+                            Instead of only asking players to identify whether information is trustworthy, FAMIL.AI lets them experience both how persuasion is constructed and how persuasion is questioned.
+                        </p>
+                    </div>
+                    <div class="space-y-4 bg-sand p-8 rounded-2xl border border-sand-dark">
+                        <div class="flex items-center space-x-4">
+                            <span class="w-10 h-10 rounded-xl bg-terracotta-subtle text-terracotta flex items-center justify-center font-bold text-base font-serif">01</span>
+                            <div>
+                                <h4 class="font-bold text-base text-charcoal">Inverted Learning</h4>
+                                <p class="text-sm text-charcoal-muted">Why does this piece of information feel believable?</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 pt-3 border-t border-sand-muted">
+                            <span class="w-10 h-10 rounded-xl bg-terracotta-subtle text-terracotta flex items-center justify-center font-bold text-base font-serif">02</span>
+                            <div>
+                                <h4 class="font-bold text-base text-charcoal">Intergenerational Learning</h4>
+                                <p class="text-sm text-charcoal-muted">Two distinct generations learning and reasoning together.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 pt-3 border-t border-sand-muted">
+                            <span class="w-10 h-10 rounded-xl bg-terracotta-subtle text-terracotta flex items-center justify-center font-bold text-base font-serif">03</span>
+                            <div>
+                                <h4 class="font-bold text-base text-charcoal">Reflection-Driven Learning</h4>
+                                <p class="text-sm text-charcoal-muted">Understanding how personal judgment was formed.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-charcoal text-sand p-10 md:p-14 rounded-3xl space-y-8 editorial-shadow relative overflow-hidden">
+                    <div class="absolute right-0 top-0 w-96 h-96 bg-terracotta/15 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="space-y-3">
+                        <span class="text-sm uppercase tracking-widest text-terracotta-light font-bold">Core Evaluation Engine</span>
+                        <h3 class="text-3xl lg:text-4xl font-serif text-sand">The S.P.O.T. Framework Explained</h3>
+                        <p class="text-sand-muted text-base max-w-2xl leading-relaxed">
+                            FAMIL.AI replaces vague skepticism with a structured 4-pillar evaluation model that players use during investigator rounds and AI debriefs:
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
+                        <div class="bg-charcoal-muted/20 p-6 rounded-2xl border border-sand-muted/20 space-y-3">
+                            <span class="text-terracotta-light font-serif font-bold text-2xl">S</span>
+                            <h4 class="font-bold text-sand text-lg">Source & Timestamp</h4>
+                            <p class="text-xs text-sand-muted leading-relaxed">
+                                Investigating original provenance, publication metadata, domain history, and whether the author's credentials match the claim.
+                            </p>
+                        </div>
+                        <div class="bg-charcoal-muted/20 p-6 rounded-2xl border border-sand-muted/20 space-y-3">
+                            <span class="text-terracotta-light font-serif font-bold text-2xl">P</span>
+                            <h4 class="font-bold text-sand text-lg">Persuasion Cues</h4>
+                            <p class="text-xs text-sand-muted leading-relaxed">
+                                Identifying emotional triggers, urgency amplifiers, and visual manipulation designed to bypass critical thinking before verification.
+                            </p>
+                        </div>
+                        <div class="bg-charcoal-muted/20 p-6 rounded-2xl border border-sand-muted/20 space-y-3">
+                            <span class="text-terracotta-light font-serif font-bold text-2xl">O</span>
+                            <h4 class="font-bold text-sand text-lg">Objective & Motive</h4>
+                            <p class="text-xs text-sand-muted leading-relaxed">
+                                Questioning the underlying intent—whether content is designed to inform, monetize, provoke outrage, or influence public perception.
+                            </p>
+                        </div>
+                        <div class="bg-charcoal-muted/20 p-6 rounded-2xl border border-sand-muted/20 space-y-3">
+                            <span class="text-terracotta-light font-serif font-bold text-2xl">T</span>
+                            <h4 class="font-bold text-sand text-lg">Triangulation</h4>
+                            <p class="text-xs text-sand-muted leading-relaxed">
+                                Cross-referencing claims across independent corroborating sources rather than relying on a single emotional social media feed post.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gameplay" class="py-28 px-6 max-w-6xl mx-auto border-b border-sand-dark scroll-mt-24">
+            <div class="space-y-16">
+                <div class="max-w-3xl space-y-4">
+                    <span class="text-sm uppercase font-bold tracking-widest text-terracotta">Interactive Experience</span>
+                    <h2 class="text-4xl lg:text-6xl font-serif text-charcoal leading-tight">
+                        <span class="bracket-badge">“One Scenario, Two Roles, Total Reversal.”</span>
+                    </h2>
+                    <p class="text-charcoal text-lg">
+                        FAMIL.AI is designed to feel like a real product, not only a concept. Experience the structured 10-minute session flow and concrete post-game output below.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 md:p-10 rounded-3xl border border-sand-dark editorial-shadow space-y-8">
+                    <div class="space-y-3">
+                        <span class="text-xs uppercase font-bold tracking-widest text-terracotta">Product Journey</span>
+                        <h3 class="text-2xl font-serif text-charcoal font-bold">A 10-Minute Family Learning Session</h3>
+                        <p class="text-base text-charcoal-muted">One scenario. Two generations. One shared reflection.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-5 gap-4">
+                        <div class="bg-sand p-5 rounded-2xl border border-sand-dark text-center space-y-2">
+                            <span class="text-xs font-bold text-terracotta font-mono">01</span>
+                            <h4 class="font-bold text-charcoal text-sm">Choose a Scenario</h4>
+                        </div>
+                        <div class="bg-sand p-5 rounded-2xl border border-sand-dark text-center space-y-2">
+                            <span class="text-xs font-bold text-terracotta font-mono">02</span>
+                            <h4 class="font-bold text-charcoal text-sm">Compose or Investigate</h4>
+                        </div>
+                        <div class="bg-sand p-5 rounded-2xl border border-sand-dark text-center space-y-2">
+                            <span class="text-xs font-bold text-terracotta font-mono">03</span>
+                            <h4 class="font-bold text-charcoal text-sm">Reverse Roles</h4>
+                        </div>
+                        <div class="bg-sand p-5 rounded-2xl border border-sand-dark text-center space-y-2">
+                            <span class="text-xs font-bold text-terracotta font-mono">04</span>
+                            <h4 class="font-bold text-charcoal text-sm">Receive S.P.O.T. AI Debrief</h4>
+                        </div>
+                        <div class="bg-sand p-5 rounded-2xl border border-sand-dark text-center space-y-2">
+                            <span class="text-xs font-bold text-terracotta font-mono">05</span>
+                            <h4 class="font-bold text-charcoal text-sm">Discuss Together</h4>
+                        </div>
+                    </div>
+
+                    <div class="bg-terracotta-subtle p-8 rounded-2xl border border-terracotta/30 space-y-6">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-terracotta bg-white px-3.5 py-1 rounded-full border border-terracotta/20">Concrete Product Output Example</span>
+                            <span class="text-xs font-semibold text-charcoal-muted">S.P.O.T. Analytics Engine</span>
+                        </div>
+                        <div class="space-y-4">
+                            <h4 class="text-xl font-serif font-bold text-charcoal">Family Insight Card</h4>
+                            <div class="bg-white p-6 rounded-2xl border border-terracotta/20 space-y-3 shadow-2xs">
+                                <p class="font-serif font-bold text-lg text-charcoal">Your Family's Reasoning Snapshot</p>
+                                <p class="text-sm text-charcoal"><strong>Strongest skill:</strong> Recognizing emotional urgency</p>
+                                <p class="text-sm text-charcoal"><strong>Developing skill:</strong> Checking source provenance</p>
+                                <p class="text-sm text-charcoal"><strong>Different viewpoint detected:</strong> Parent relied more on source familiarity; child focused more on visual persuasion.</p>
+                                <div class="pt-3 border-t border-sand">
+                                    <p class="text-sm font-medium text-terracotta-dark"><strong>Next conversation prompt:</strong> “What made this information feel trustworthy at first?”</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 md:p-12 rounded-3xl border border-sand-dark editorial-shadow space-y-8">
+                    <div class="flex flex-wrap items-center justify-between gap-4 border-b border-sand pb-6">
+                        <div>
+                            <span class="text-xs uppercase font-bold tracking-widest text-terracotta">Gameplay Flow</span>
+                            <h3 class="text-2xl font-serif text-charcoal font-semibold">Standardized Interactive Workflow</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="switchTab('step1')" id="btn-step1" class="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-terracotta text-white transition-all shadow-xs">1. Room Setup</button>
+                            <button onclick="switchTab('step2')" id="btn-step2" class="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-sand text-charcoal hover:bg-sand-dark transition-all">2. Dual Roles</button>
+                            <button onclick="switchTab('step3')" id="btn-step3" class="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-sand text-charcoal hover:bg-sand-dark transition-all">3. Role Reversal</button>
+                            <button onclick="switchTab('step4')" id="btn-step4" class="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-sand text-charcoal hover:bg-sand-dark transition-all">4. S.P.O.T Debrief</button>
+                            <button onclick="switchTab('step5')" id="btn-step5" class="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-sand text-charcoal hover:bg-sand-dark transition-all">5. Family Dialogue</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Enter Room -->
+                    <div id="tab-step1" class="tab-content active space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                            <div class="space-y-4">
+                                <span class="text-xs font-bold uppercase tracking-widest text-terracotta bg-terracotta-subtle px-3 py-1 rounded-full border border-terracotta/20">Step 1</span>
+                                <h4 class="text-2xl font-serif text-charcoal font-bold">Shared Room Setup</h4>
+                                <p class="text-base text-charcoal-muted leading-relaxed">
+                                    Families connect via a Room Code. AI provides a hypothetical scenario package (e.g., water supply safety rumor). Both players access the same baseline information with collaborative goals.
+                                </p>
+                                <div class="p-4 bg-sand rounded-2xl border border-sand-dark flex items-center justify-between">
+                                    <span class="text-sm font-bold text-charcoal">Room Code: <span class="text-terracotta font-mono text-lg">#9284</span></span>
+                                    <span class="bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-bold">Ready</span>
+                                </div>
+                            </div>
+                            <div class="bg-gradient-to-br from-sand to-sand-dark p-6 rounded-2xl border border-sand-dark space-y-4 shadow-sm relative overflow-hidden">
+                                <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-terracotta/10 rounded-full blur-xl pointer-events-none"></div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fa-solid fa-qrcode text-terracotta text-lg"></i>
+                                        <span class="text-xs font-bold uppercase tracking-wider text-charcoal">Session Pairing Hub</span>
+                                    </div>
+                                    <span class="text-xs bg-white px-2.5 py-1 rounded-full font-semibold border border-sand-dark text-charcoal-muted">Parent + Child</span>
+                                </div>
+                                <div class="bg-white p-4 rounded-xl border border-sand-dark space-y-2">
+                                    <div class="flex justify-between text-xs text-charcoal-muted">
+                                        <span>Scenario Package #4</span>
+                                        <span class="text-terracotta font-bold">Water Supply Rumor</span>
+                                    </div>
+                                    <div class="h-2 bg-sand rounded-full overflow-hidden">
+                                        <div class="bg-terracotta w-full h-full rounded-full"></div>
+                                    </div>
+                                    <p class="text-xs text-charcoal font-medium pt-1">Synchronizing family mobile and tablet devices.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Create and Investigate -->
+                    <div id="tab-step2" class="tab-content space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="bg-sand p-6 rounded-2xl border border-sand-dark space-y-4 shadow-sm flex flex-col justify-between">
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-bold uppercase tracking-widest text-terracotta bg-terracotta-subtle px-3 py-1 rounded-full border border-terracotta/20">Role A</span>
+                                        <span class="text-xs font-semibold text-charcoal-muted"><i class="fa-solid fa-pen-nib text-terracotta mr-1"></i> Composer</span>
+                                    </div>
+                                    <h4 class="font-bold text-charcoal text-lg">Media Composer</h4>
+                                    <p class="text-xs text-charcoal-muted italic leading-relaxed">"Objective: Edit headlines, select images, and add emotionally charged wording to drive engagement and artificial urgency."</p>
+                                    <div class="p-3.5 bg-white rounded-xl border border-sand-dark space-y-2">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                                            <span class="text-xs font-bold text-charcoal">Draft Headline:</span>
+                                        </div>
+                                        <p class="text-xs font-medium text-terracotta bg-terracotta-subtle p-2.5 rounded-lg border border-terracotta/10">
+                                            “URGENT: Experts warn residents to stock up on bottled water immediately!”
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="pt-2 text-[11px] text-charcoal-light font-medium uppercase tracking-wider">
+                                    Goal: Maximize engagement & manufactured urgency
+                                </div>
+                            </div>
+
+                            <div class="bg-sand p-6 rounded-2xl border border-sand-dark space-y-4 shadow-sm flex flex-col justify-between">
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-bold uppercase tracking-widest text-terracotta bg-terracotta-subtle px-3 py-1 rounded-full border border-terracotta/20">Role B</span>
+                                        <span class="text-xs font-semibold text-charcoal-muted"><i class="fa-solid fa-magnifying-glass text-terracotta mr-1"></i> Investigator</span>
+                                    </div>
+                                    <h4 class="font-bold text-charcoal text-lg">Investigator</h4>
+                                    <p class="text-xs text-charcoal-muted italic leading-relaxed">"Objective: Use the S.P.O.T. toolkit to tag suspicious elements and decide whether to trust or flag the content."</p>
+                                    <div class="p-3.5 bg-white rounded-xl border border-sand-dark space-y-2">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                                            <span class="text-xs font-bold text-charcoal">Signal Tags:</span>
+                                        </div>
+                                        <div class="flex flex-wrap gap-1.5 pt-1">
+                                            <span class="bg-terracotta-subtle text-terracotta text-[11px] px-2.5 py-1 rounded-md font-bold border border-terracotta/20">⚠️ Missing Source Provenance</span>
+                                            <span class="bg-terracotta-subtle text-terracotta text-[11px] px-2.5 py-1 rounded-md font-bold border border-terracotta/20">⚠️ High Emotional Trigger</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pt-2 flex gap-2">
+                                    <button class="flex-1 bg-white text-[11px] font-bold py-2 rounded-lg border border-sand-dark text-charcoal shadow-2xs hover:bg-sand-dark transition-all">Trust Content</button>
+                                    <button class="flex-1 bg-terracotta text-white text-[11px] font-bold py-2 rounded-lg shadow-2xs hover:bg-terracotta-dark transition-all">Flag Cues</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Switch Roles -->
+                    <div id="tab-step3" class="tab-content space-y-6">
+                        <div class="bg-charcoal p-8 md:p-10 rounded-2xl text-sand text-center space-y-6 editorial-shadow relative overflow-hidden">
+                            <div class="absolute right-0 top-0 w-64 h-64 bg-terracotta/15 rounded-full blur-3xl pointer-events-none"></div>
+                            <span class="text-xs font-bold uppercase tracking-widest text-terracotta-light">Step 3 / Role Reversal</span>
+                            <h4 class="text-3xl font-serif">Role Reversal Exchange</h4>
+                            <p class="max-w-xl mx-auto italic text-sand-muted leading-relaxed">
+                                After the first round, parents and children switch roles. The former content composer experiences why the investigator questioned them, and vice versa. This breaks generational barriers and builds critical reasoning from both angles.
+                            </p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto pt-2">
+                                <div class="bg-charcoal-muted/20 p-4 rounded-xl border border-sand-muted/20 text-xs text-left space-y-1">
+                                    <span class="text-terracotta-light font-bold uppercase tracking-wider">Round 1</span>
+                                    <p class="text-sand font-medium">Child = Composer | Parent = Investigator</p>
+                                </div>
+                                <div class="bg-charcoal-muted/20 p-4 rounded-xl border border-sand-muted/20 text-xs text-left space-y-1">
+                                    <span class="text-terracotta-light font-bold uppercase tracking-wider">Round 2 (Reversed)</span>
+                                    <p class="text-sand font-medium">Child = Investigator | Parent = Composer</p>
+                                </div>
+                            </div>
+                            <div class="inline-block bg-charcoal-muted/30 px-5 py-2.5 rounded-xl border border-sand-muted/20 text-xs font-semibold uppercase tracking-wider text-sand">
+                                Bridging generational divides and building mutual empathy
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: AI Debrief -->
+                    <div id="tab-step4" class="tab-content space-y-6">
+                        <div class="space-y-4">
+                            <span class="text-xs font-bold uppercase tracking-widest text-terracotta bg-terracotta-subtle px-3 py-1 rounded-full border border-terracotta/20">Step 4</span>
+                            <h4 class="text-2xl font-serif font-bold text-charcoal">S.P.O.T. AI Debrief</h4>
+                            <p class="text-base text-charcoal-muted">AI analyzes the differences between the family's dual decisions:</p>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+                                <div class="bg-sand p-5 rounded-2xl border border-sand-dark space-y-2">
+                                    <span class="text-terracotta font-serif font-bold text-xl">S</span>
+                                    <h5 class="font-bold text-charcoal text-sm">Source</h5>
+                                    <p class="text-xs text-charcoal-muted leading-relaxed">AI points out unverified source provenance.</p>
+                                </div>
+                                <div class="bg-sand p-5 rounded-2xl border border-sand-dark space-y-2">
+                                    <span class="text-terracotta font-serif font-bold text-xl">P</span>
+                                    <h5 class="font-bold text-charcoal text-sm">Persuasion Cues</h5>
+                                    <p class="text-xs text-charcoal-muted leading-relaxed">AI dissects exaggerated sensational headlines.</p>
+                                </div>
+                                <div class="bg-sand p-5 rounded-2xl border border-sand-dark space-y-2">
+                                    <span class="text-terracotta font-serif font-bold text-xl">O</span>
+                                    <h5 class="font-bold text-charcoal text-sm">Objective</h5>
+                                    <p class="text-xs text-charcoal-muted leading-relaxed">Why this content exists (clickbait, monetization, panic induction).</p>
+                                </div>
+                                <div class="bg-sand p-5 rounded-2xl border border-sand-dark space-y-2">
+                                    <span class="text-terracotta font-serif font-bold text-xl">T</span>
+                                    <h5 class="font-bold text-charcoal text-sm">Triangulation</h5>
+                                    <p class="text-xs text-charcoal-muted leading-relaxed">Recommending reputable independent sources for cross-checking.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Family Dialogue -->
+                    <div id="tab-step5" class="tab-content space-y-6">
+                        <div class="bg-terracotta-subtle p-8 rounded-2xl border border-terracotta/20 text-center space-y-4">
+                            <span class="text-xs font-bold uppercase tracking-widest text-terracotta">Step 5 / Conclusion</span>
+                            <h4 class="text-2xl font-serif font-bold text-terracotta-dark">Continuing the Family Dialogue</h4>
+                            <p class="text-base text-charcoal max-w-xl mx-auto leading-relaxed">
+                                The game concludes with guided discussion prompts, helping families compare parent and child choices and turning any disagreements into practical learning moments.
+                            </p>
+                            <div class="pt-2">
+                                <span class="inline-flex items-center space-x-2 bg-white px-5 py-2.5 rounded-full border border-terracotta/30 text-xs font-bold uppercase tracking-wider text-terracotta shadow-2xs">
+                                    <i class="fa-solid fa-comments text-terracotta"><span>Conversations Before Conclusions</span></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="validation" class="py-28 px-6 max-w-5xl mx-auto border-b border-sand-dark scroll-mt-24">
+            <div class="space-y-12">
+                <div class="max-w-3xl space-y-4">
+                    <span class="text-sm uppercase font-bold tracking-widest text-terracotta">Evidence & Testing</span>
+                    <h2 class="text-4xl lg:text-6xl font-serif text-charcoal leading-tight">
+                        <span class="bracket-badge">“Strengthening Validation and Impact.”</span>
+                    </h2>
+                    <p class="text-charcoal text-lg">
+                        A rigorous distinction between existing external evidence, our core hypotheses, and planned pilot testing.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-3xl border border-sand-dark space-y-4 editorial-shadow">
+                        <span class="text-sm font-bold uppercase tracking-widest text-terracotta">What We Know</span>
+                        <p class="text-xs uppercase font-semibold text-charcoal-muted">Existing External Research Findings</p>
+                        <ul class="space-y-3 text-sm text-charcoal-muted">
+                            <li class="flex items-start space-x-2">
+                                <i class="fa-solid fa-check text-terracotta mt-1"></i>
+                                <span>Adolescent exposure to unverified online misinformation (~2/3 in Norway study).</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <i class="fa-solid fa-check text-terracotta mt-1"></i>
+                                <span>Confidence vs actual ability gap documented by Ofcom media literacy research.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-3xl border border-sand-dark space-y-4 editorial-shadow">
+                        <span class="text-sm font-bold uppercase tracking-widest text-terracotta">What We Hypothesize</span>
+                        <p class="text-xs uppercase font-semibold text-charcoal-muted">Core Research Proposition</p>
+                        <p class="text-sm text-charcoal leading-relaxed">
+                            We hypothesize that structured intergenerational dialogue can improve not only recognition of misinformation cues, but also the ability to explain why information feels convincing.
+                        </p>
+                    </div>
+
+                    <div class="bg-sand p-8 rounded-3xl border border-sand-dark space-y-4 editorial-shadow">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-bold uppercase tracking-widest text-terracotta">What We Will Test</span>
+                            <span class="bg-terracotta-subtle text-terracotta text-[11px] px-2.5 py-0.5 rounded-full font-bold border border-terracotta/20">[TO BE VALIDATED]</span>
+                        </div>
+                        <p class="text-xs uppercase font-semibold text-charcoal-muted">Planned Pilot Measurement</p>
+                        <p class="text-sm text-charcoal-muted leading-relaxed">
+                            Planned pilot study across a cohort of 50 parents and children aged 10–18, measuring behavioral pause times, follow-up conversation frequency, and persuasive literacy explanation depth.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="impact" class="py-28 px-6 max-w-5xl mx-auto border-b border-sand-dark scroll-mt-24">
+            <div class="space-y-12">
+                <div class="max-w-3xl space-y-4">
+                    <span class="text-sm uppercase font-bold tracking-widest text-terracotta">Success Metrics</span>
+                    <h2 class="text-4xl lg:text-6xl font-serif text-charcoal leading-tight">
+                        <span class="bracket-badge">“Success is behavior, not downloads.”</span>
+                    </h2>
+                    <p class="text-charcoal text-lg">
+                        Evaluating genuine impact through behavioral indicators and longitudinal family habits.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-3xl border border-sand-dark space-y-4 editorial-shadow transition-transform hover:-translate-y-1">
+                        <span class="text-sm font-bold text-terracotta uppercase">Indicator 01</span>
+                        <h3 class="font-bold text-charcoal text-xl">Behavioral Pause</h3>
+                        <p class="text-base text-charcoal-muted leading-relaxed">
+                            Time-to-react and pause-before-sharing behavior during simulated scenarios.
+                        </p>
+                        <div class="pt-3 border-t border-sand text-xs font-semibold text-terracotta">
+                            Pilot hypothesis: participants will show a measurable increase in deliberate pause behavior after completing the intervention.
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-3xl border border-sand-dark space-y-4 editorial-shadow transition-transform hover:-translate-y-1">
+                        <span class="text-sm font-bold text-terracotta uppercase">Indicator 02</span>
+                        <h3 class="font-bold text-charcoal text-xl">Conversational Frequency</h3>
+                        <p class="text-base text-charcoal-muted leading-relaxed">
+                            7-day and 30-day follow-up surveys assessing whether families continue discussing digital information after the game.
+                        </p>
+                        <div class="pt-3 border-t border-sand text-xs font-semibold text-terracotta">
+                            Key outcome: whether the intervention creates a habit of family dialogue beyond the game session.
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-3xl border border-sand-dark space-y-4 editorial-shadow transition-transform hover:-translate-y-1">
+                        <span class="text-sm font-bold text-terracotta uppercase">Indicator 03</span>
+                        <h3 class="font-bold text-charcoal text-xl">Persuasive Literacy</h3>
+                        <p class="text-base text-charcoal-muted leading-relaxed">
+                            S.P.O.T. signal-recognition and explanation tasks.
+                        </p>
+                        <div class="pt-3 border-t border-sand text-xs font-semibold text-terracotta">
+                            Key outcome: whether participants can explain not only whether content is trustworthy, but why it initially felt convincing.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="vision" class="bg-charcoal text-sand py-28 px-6 overflow-hidden relative">
+            <div class="absolute -right-32 -bottom-32 w-96 h-96 bg-terracotta/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="max-w-4xl mx-auto text-center space-y-10 relative z-10">
+                <span class="text-sm uppercase font-bold tracking-widest text-terracotta-light">Final Vision</span>
+                
+                <div class="bg-charcoal-muted/20 p-8 sm:p-10 rounded-3xl border border-sand-muted/20 max-w-3xl mx-auto space-y-6">
+                    <p class="text-2xl sm:text-3xl font-serif text-sand leading-relaxed">
+                        FAMIL.AI is not another fact-checking tool.
+                    </p>
+                    <p class="text-xl sm:text-2xl font-serif text-terracotta-light leading-relaxed">
+                        It is an intergenerational learning model designed to turn verification into a shared family habit.
+                    </p>
+                </div>
+
+                <div class="bg-charcoal-muted/20 p-6 sm:p-10 rounded-3xl border border-sand-muted/20 max-w-3xl mx-auto space-y-4">
+                    <p class="text-xl sm:text-2xl font-serif italic text-sand leading-relaxed">
+                        <span class="block bg-charcoal p-6 rounded-2xl border border-terracotta/40 text-sand">“We are not just building a game about AI Literacy. We are building an intergenerational learning model where every family can become a first line of resilience against misinformation in the AI era.”</span>
+                    </p>
+                </div>
+
+                <div class="pt-6 space-y-4">
+                    <h3 class="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-sand">FAMIL<span class="text-terracotta-light">.AI</span></h3>
+                    <p class="text-sand font-serif italic text-lg sm:text-xl">Different Voices. Better Choices. Conversations Before Conclusions.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-sand-dark/80 text-charcoal py-16 px-6 text-center border-t border-sand-dark relative">
+        <div class="max-w-3xl mx-auto space-y-3">
+            <p class="text-sm font-bold uppercase tracking-widest text-charcoal">FAMIL.AI Project Initiative • Competition Portfolio 2026</p>
+            <p class="text-sm text-charcoal-muted">All rights reserved.</p>
+            <div class="pt-6">
+                <a href="#" class="inline-flex items-center space-x-2 bg-white text-charcoal px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider border border-sand-dark hover:bg-terracotta hover:text-white transition-all shadow-xs">
+                    <span>Back to Top</span>
+                    <i class="fa-solid fa-arrow-up text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            const tabs = ['step1', 'step2', 'step3', 'step4', 'step5'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`btn-${t}`);
+                if (btn) {
+                    btn.className = "px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-sand text-charcoal hover:bg-sand-dark transition-all";
+                }
+            });
+
+            const activeTab = document.getElementById(`tab-${tabId}`);
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
+
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            if (activeBtn) {
+                activeBtn.className = "px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-terracotta text-white transition-all shadow-xs";
+            }
+        }
+    </script>
+</body>
+</html>
